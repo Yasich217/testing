@@ -1,7 +1,7 @@
 {
   "name": "testing",
   "version": "1.0.0",
-  "description": "testing",
+  "description": "testing project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,7 +13,7 @@
   "keywords": [
     "test"
   ],
-  "author": "Yaroslav",
+  "author": "Yaroslav Kazarin",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Yasich217/testing/issues"

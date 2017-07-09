@@ -1,5 +1,5 @@
 var App = function() {
-    console.log("App created");
+    console.log("App init");
 }
 
 var app = new App();

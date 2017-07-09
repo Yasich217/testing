@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Yasich217/testing/issues"
   },
-  "homepage": "https://github.com/Yasich217/testing#readme"
+  "homepage": "https://github.com/Yasich217/testing#readme",
+  "devDependencies": {
+    "webpack": "^3.1.0"
+  }
 }

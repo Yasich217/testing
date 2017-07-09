@@ -1,0 +1,22 @@
+{
+  "name": "testing",
+  "version": "1.0.0",
+  "description": "testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yasich217/testing.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Yaroslav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yasich217/testing/issues"
+  },
+  "homepage": "https://github.com/Yasich217/testing#readme"
+}

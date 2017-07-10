@@ -1,65 +1,83 @@
+//Подключение Реакта
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-require('./less/index');
 
-class App extends React.Component {
+//Подключение препроцессора
+import './less/index';
 
-    constructor(props) {
-        super(props);
+//Подключение компонентов
+import Header from './components/header';
+import Content from './components/content';
+import Footer from './components/footer';
 
-        this.defaultText = 'Начните поиск...';
-        this.text = this.defaultText;
-        this.state = {
-            text: this.defaultText
-        }
-    };
+// class App extends React.Component {
 
-    //Стандартные значения, если они не переданны
-    static defaultProps = {
-        testText: 'Default text'
-    };
+//     constructor(props) {
+//         super(props);
 
-    //Типы передаваемых значений
-    static propTypes = {
-        testText: PropTypes.string.isRequired
-    };
+//         this.defaultText = 'Начните поиск...';
+//         this.text = this.defaultText;
+//         this.state = {
+//             text: this.defaultText
+//         }
+//     };
 
-    inputChange(event) {
-        this.text = event.target.value;
-        this.setState({text: this.text});
-        console.log('Ищем это - ', this.text);
-    }
+//     //Стандартные значения, если они не переданны
+//     static defaultProps = {
+//         testText: 'Default text'
+//     };
 
-    startInput() {
-        if(this.text === this.defaultText) {
-            this.text = '';
-            this.setState({text: this.text});
-        }
-    }
+//     //Типы передаваемых значений
+//     static propTypes = {
+//         testText: PropTypes.string.isRequired
+//     };
 
-    endInput(event) {
-        if(event.target.value === '') {
-            this.text = this.defaultText;
-            this.setState({text: this.defaultText});
-        }
-    }
+//     inputChange(event) {
+//         this.text = event.target.value;
+//         this.setState({text: this.text});
+//         console.log('Ищем это - ', this.text);
+//     }
 
-    //Рендер компонента
+//     startInput() {
+//         if(this.text === this.defaultText) {
+//             this.text = '';
+//             this.setState({text: this.text});
+//         }
+//     }
+
+//     endInput(event) {
+//         if(event.target.value === '') {
+//             this.text = this.defaultText;
+//             this.setState({text: this.defaultText});
+//         }
+//     }
+
+//     //Рендер компонента
+//     render() {
+//         return (
+//             <div className="main">
+//                 <h1>{this.props.testText}</h1>
+//                 <input type="text" onBlur={this.endInput.bind(this)} onFocus={this.startInput.bind(this)} value={this.state.text} onChange={this.inputChange.bind(this)}/>
+//             </div>
+//         );
+//     }
+
+// }
+
+class AppSearch extends React.Component {
     render() {
         return (
-            <div className="main">
-                <h1>{this.props.testText}</h1>
-                <input type="text" onBlur={this.endInput.bind(this)} onFocus={this.startInput.bind(this)} value={this.state.text} onChange={this.inputChange.bind(this)}/>
+            <div className = "search_app">
+                <Header />
+                <Content />
+                <Footer />
             </div>
         );
-    }
-
+    };
 }
 
-/*
 ReactDOM.render(
-    <App testText='This is test text!' />,
+    <AppSearch />,
     document.getElementById('app')
 );
-*/

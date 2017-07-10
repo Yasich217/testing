@@ -71,7 +71,6 @@ class AppSearch extends React.Component {
             <div className = "search_app">
                 <Header />
                 <Content />
-                <Footer />
             </div>
         );
     };

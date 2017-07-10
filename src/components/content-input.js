@@ -1,28 +1,36 @@
 import React from 'react';
 
 class ContentInput extends React.Component {
-
-
     constructor(props) {
         super(props);
-        this.defaultText = 'Начинайте искать...';
-        this.tips = this.defaultText;
-        this.state = {
-            text: this.defaultText
-        }
-    };
 
-    inputChange(event) {
-        this.text = event.target.value;
-        this.props.searchChange.setState({keywords: this.text});
+        this.state = {
+            text: this.props.text ?  this.props.text : ''
+        }
     }
 
+    componentWillReceiveProps(newProps) {
+        this.setState({
+            text: newProps.text
+        });
+    }
+
+    changeInput = (event) => {
+        const text = event.target.value;
+        this.setState({text}, () => this.props.changeInput(text));
+    }
+
+    clearInput = (event) => {
+        this.setState({text: ''}, () => this.props.changeInput(''));
+        event.target.focus();
+    }
 
     render() {
         return (
-        <div id = "search_app_content_input">
-            <input type="text" onChange={ this.inputChange.bind(this) } placeholder={ this.tips } />
-        </div>
+            <div id = "search_app_content_input">
+                <input type="text" value = { this.state.text } onChange={ this.changeInput } placeholder='Начинайте искать...' />
+                <img src="./trash.png" onClick={this.clearInput } className="clear_input" />
+            </div>
         );
     }
 }

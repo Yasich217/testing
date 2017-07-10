@@ -29,7 +29,7 @@ html,body {
             height: 50px;
             width: 395px;
             background: #6b50ff;
-            margin: 10px auto 0px;
+            margin: 0 auto 0;
             border-radius: 10px;
 
                 input {
@@ -37,6 +37,12 @@ html,body {
                     padding: 6px;
                     margin: 10px;
                     border-radius: 10px;
+                    outline:none;
+                }
+
+                img {
+                    margin: -5px -30px;
+                    cursor: pointer;
                 }
         }
 
@@ -49,32 +55,6 @@ html,body {
             left: 0;
             right: 0;
             border-radius: 10px;
-
-            &_items:hover {
-                background: #a3e5ff;
-            }
-
-            &_items {
-                padding: 5px;
-                margin: 5px;
-                background: #e8eaff;
-                cursor: pointer;
-                border-radius: 15px;
-
-                &_left {
-                    float: left;
-                    color: red;
-                }
-
-                &_center {
-                    color: brown;
-                }
-
-                &_right {
-                    float: right;
-                    color: blue;
-                }
-            }
         }
     }
 
@@ -87,4 +67,34 @@ html,body {
         right: 0;
         bottom: 0;
     }
+}
+
+.search_app_content_result_items {
+    padding: 5px;
+    margin: 5px;
+    background: #e8eaff;
+    cursor: pointer;
+    border-radius: 15px;
+
+    &_left {
+        float: left;
+        color: red;
+    }
+
+    &_center {
+        color: brown;
+    }
+
+    &_right {
+        float: right;
+        color: blue;
+    }
+}
+
+.search_app_content_result_items:hover {
+    background: #a3e5ff;
+}
+
+.search_app_content_result_items:active {
+    background: #3282a0;
 }

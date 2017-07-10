@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
+const less = require('less');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -82,6 +83,10 @@ module.exports = {
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'url?limit=10000&mimetype=image/svg+xml&name=fonts/[name].[ext]'
+            },
+            {
+                test: /\.less$/,
+                loader: 'style-loader!css-loader!less-loader'
             }
         ]
     }

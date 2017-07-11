@@ -1,35 +1,31 @@
 import React from 'react';
 
 class ContentInput extends React.Component {
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
 
-        this.state = {
-            text: this.props.text ?  this.props.text : ''
-        }
-    }
+    //     this.state = {
+    //         query: this.props.query ?  this.props.query : ''
+    //     }
+    // }
 
-    componentWillReceiveProps(newProps) {
-        this.setState({
-            text: newProps.text
-        });
-    }
+    // componentWillReceiveProps(newProps) {
+    //     const query = newProps.query;
+    //     //this.setState({query}, () => this.props.onChange(query));
+    // }
 
-    changeInput = (event) => {
-        const text = event.target.value;
-        this.setState({text}, () => this.props.changeInput(text));
-    }
+    // changeInput = (event) => {
+    //     const query = event.target.value;
+        
+    //     this.setState({query}, () => this.props.onChange(query));
+    // }
 
-    clearInput = (event) => {
-        this.setState({text: ''}, () => this.props.changeInput(''));
-        event.target.focus();
-    }
 
     render() {
         return (
-            <div id = "search_app_content_input">
-                <input type="text" value = { this.state.text } onChange={ this.changeInput } placeholder='Начинайте искать...' />
-                <img src="./trash.png" onClick={this.clearInput } className="clear_input" />
+            <div className = "search_app_content_input">
+                <input type="text" value = { this.props.query } onChange = { this.props.onChange } placeholder='Начинайте искать...' />
+                <img src= { this.props.icon } onClick = {this.props.clear } className="clear_input" />
             </div>
         );
     }

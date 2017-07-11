@@ -1,50 +1,55 @@
 import React from 'react';
 import ContentInput from './content-input';
 import ContentResult from './content-result';
-import Database from '../constants/database';
+import Axios from 'axios';
 
 class Content extends React.Component {
+
     constructor(props) {
         super(props);
 
         this.state = {
-            keywords: ''
+            query: '',
+            result: [],
+            icon: './trash.png'
         };
-
-        this.desription = '';
     }
 
-    changeInput = (text) => {
-        //setTimeout(() => this.setState({keywords: text}), 500);
-        this.setState({keywords: text});
+    onChange = (event) => {
+        let query = event.target.value;
+
+        if(query != '') 
+            this.send(query);
+        else
+            this.setState({result: []});
+
+        this.setState({ query, icon: './load.gif' });
     }
 
-    changeResult = (item) => {
-        if(item.desc.toLowerCase().indexOf(this.state.keywords.toLowerCase()) !== -1) {
-            {this.desription =  item.desc }
-            return (
-                
-                <div key={item.id} onClick={ this.clickItem } className = "search_app_content_result_items">
-                    <div className = "search_app_content_result_items_left">{ item.id  }</div>
-                    <div className="search_app_content_result_items_right"> { item.name }</div>
-                    <div className = "search_app_content_result_items_center">{ item.desc }</div>
-                </div>
-            );
-        }
+    send = (query) => {
+        Axios.get('https://typeahead-js-twitter-api-proxy.herokuapp.com/demo/search?q=' + query)
+        .then((response) => {
+            this.setState({result: response.data, icon: './trash.png'});    
+        })
+        .catch(function (error) {
+            this.setState({result: response.data, icon: './load.gif'});
+        });      
     }
 
-    clickItem = () => {
-       this.setState({
-           keywords: this.desription
-       });
+    select = (event) => {
+        let query = event.target.innerHTML;
+        this.setState({ query, icon: './load.gif'}, () => this.send(query));
     }
 
+    clear = (event) => {
+        this.setState({ query: '', result: [] });
+    }
 
     render() {
         return (
-        <div id = "search_app_content">
-            <ContentInput text = {this.state.keywords} changeInput={ this.changeInput } />
-            { this.state.keywords.trim().length > 0 &&  <ContentResult changeResult={ this.changeResult } />}
+        <div className = "search_app_content">
+            <ContentInput icon = { this.state.icon } clear = { this.clear } query = { this.state.query } onChange={ this.onChange } />
+            <ContentResult select={ this.select } result={ this.state.result } />
         </div>
         );
     }

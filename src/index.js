@@ -11,6 +11,7 @@ import Header from './components/header';
 import Content from './components/content';
 import Footer from './components/footer';
 
+
 // class App extends React.Component {
 
 //     constructor(props) {
@@ -71,6 +72,7 @@ class AppSearch extends React.Component {
             <div className = "search_app">
                 <Header />
                 <Content />
+                <Footer />
             </div>
         );
     };
